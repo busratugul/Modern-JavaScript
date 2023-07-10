@@ -1,24 +1,20 @@
-
-
-//ZORLAMA
-
 let x;
 
 // Coerced to a string
-x = 5 + '5'; //55
+x = 5 + '5';
 
 x = 5 + Number('5');
 
 // Coerced to a number
-x = 5 * '5'; //25 ve number
+x = 5 * '5';
 
 // null is coerced to 0 as it is a `falsy` value
-x = 5 + null; //5 number
+x = 5 + null;
 
-x = Number(null); //0
+x = Number(null);
 
-x = Number(true); //1
-x = Number(false); //0
+x = Number(true);
+x = Number(false);
 
 // true is coerced to a 1
 x = 5 + true;

@@ -1,6 +1,6 @@
-let amount = '100';
+let amount = 'hello';
 
-// Convert string to number 
+// Convert string to number
 amount = parseInt(amount);
 amount = +amount;
 amount = Number(amount);
@@ -13,7 +13,7 @@ amount = String(amount);
 amount = parseFloat(amount);
 
 // Convert number to boolean
-amount = Boolean(amount); //0 false other values true
+amount = Boolean(amount);
 
 // Ways to get NaN
 console.log(Math.sqrt(-1));

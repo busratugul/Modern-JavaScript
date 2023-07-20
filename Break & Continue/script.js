@@ -1,0 +1,17 @@
+// Break bir yere ulaşınca durmak için
+for (let i = 0; i <= 20; i++) {
+    if (i === 15) {
+      console.log('Breaking...');
+      break;
+    }
+    console.log(i);
+  }
+  
+  // Continue belirli bir kodu atlayıp devam etmeye yarar
+  for (let i = 0; i <= 20; i++) {
+    if (i === 13) {
+      console.log('Skipping 13...');
+      continue;
+    }
+    console.log(i);
+  }

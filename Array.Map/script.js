@@ -1,3 +1,6 @@
+/* .Map ile arrayleri değiştirip yeni bir array elde edebiliyoruz.ForEach ile de yaparız ama daha uzun sürer.
+ */
+
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const doubledNumbers = numbers.map((number) => number * 2);
@@ -43,21 +46,26 @@ const companyYears = companies.map((company) => {
 
 console.log(companyYears);
 
-// Chain map methods
+// Chain map methods-Zincirleme
+//short version
 const squareAndDouble = numbers
   .map((number) => Math.sqrt(number))
   .map((sqrt) => sqrt * 2);
 
+
+  //long version
 const squareAndDouble2 = numbers
   .map(function (number) {
     return Math.sqrt(number);
   })
-  .map(function (sqrt) {
+  .map(function (sqrt) {//üst mapten dönen sqrt içine girdi
     return sqrt * 2;
   })
-  .map(function (sqrtDoubled) {
+  .map(function (sqrtDoubled) {//2.mapten dönen sqrtDoubled içine girdi.
     return sqrtDoubled * 3;
   });
+
+
 
 // Chaining different methods
 const evenDouble = numbers

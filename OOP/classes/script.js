@@ -123,13 +123,13 @@ const app = new App()
 
 // 5- GETTERS & SETTERS with classes
 
-class Person {
+/* class Person {
   constructor(firstname, lastname) {
     this._firstname = firstname
     this._lastname = lastname
   }
   get firstname() {
-    /* return this._firstname.charAt(0).toUpperCase() + this._firstname.slice(1) */
+    // return this._firstname.charAt(0).toUpperCase() + this._firstname.slice(1) 
     return this.capitalizeFirst(this._firstname)
   }
   set firstname(value) {
@@ -137,7 +137,7 @@ class Person {
   }
 
   get lastname() {
-    /* return this._firstname.charAt(0).toUpperCase() + this._firstname.slice(1) */
+    //return this._firstname.charAt(0).toUpperCase() + this._firstname.slice(1) 
     return this.capitalizeFirst(this._lastname)
   }
   set lastname(value) {
@@ -158,6 +158,76 @@ person1.firstname = 'joe'
 person1.lastname = 'doe'
 console.log(person1)
 console.log(person1)
+console.log(person1.fullName) */
+
+//6- GETTERS & SETTERS with constructors
+
+function Person(firstName, lastName) {
+  this._firstName = firstName
+  this._lastName = lastName
+
+  //bir getter-setter oluşturmak için
+  Object.defineProperty(this, 'firstName', {
+    get: function () {
+      return this.capitalizeFirst(this._firstName)
+    },
+    set: function (value) {
+      this.firstName = value
+    },
+  })
+
+  Object.defineProperty(this, 'lastName', {
+    get: function () {
+      return this.capitalizeFirst(this._lastName)
+    },
+    set: function (value) {
+      this.lastName = value
+    },
+  })
+
+  Object.defineProperty(this, 'fullName', {
+    get: function () {
+      return this.firstName + ' ' + this.lastName
+    },
+  })
+}
+
+Person.prototype.capitalizeFirst = function (value) {
+  return value.charAt(0).toUpperCase() + value.slice(1)
+}
+const person1 = new Person('john', 'doe')
+
+//Object Lİteral
+const PersonObj = {
+  _firstName: 'jane',
+  _lastName: 'doe',
+
+  get firstName() {
+    return Person.prototype.capitalizeFirst(this._firstName)
+  },
+
+  set firstName(value) {
+    this._firstName = value
+  },
+
+  get lastName() {
+    return Person.prototype.capitalizeFirst(this._lastName)
+  },
+
+  set lastName(value) {
+    this._lastName = value
+  },
+
+  get fullName() {
+    return this.firstName + ' ' + this.lastName
+  },
+}
+
+console.log(person1.firstName)
+console.log(person1.lastName)
 console.log(person1.fullName)
 
-
+const person2 = Object.create(PersonObj)
+console.log(person2.firstName)
+console.log(person2.lastName)
+console.log(person2.fullName)
